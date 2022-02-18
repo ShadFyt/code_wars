@@ -3,7 +3,7 @@
     This number is the position the word should have in the result.
 """
 
-
+import re
 from typing import List, Dict
 
 
@@ -26,6 +26,13 @@ def order(sentence: str):
     print(" ".join([word[1] for word in sorted_words]))
 
 
-order("is2 Thi1s T4est 3a")
-order("4of Fo1r pe6ople g3ood th5e the2")
-order("")
+def order_v2(sentence: str):
+    t = sorted(
+        [(word[re.search("\d", word).start()], word) for word in sentence.split()]
+    )
+    print(" ".join([word[1] for word in t]))
+
+
+order_v2("is2 Thi1s T4est 3a")
+# order_v2("4of Fo1r pe6ople g3ood th5e the2")
+# order_v2("")
