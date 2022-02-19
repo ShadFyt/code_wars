@@ -11,5 +11,10 @@ def digital_root(n):
         return digital_root(n=sum_num)
 
 
-print(digital_root(16))
-print(digital_root(9422))
+def digital_root_one_liner(n):
+    # same as above but a one liner
+    return n if n < 10 else digital_root_one_liner(sum([int(n) for n in str(n)]))
+
+
+print(digital_root_one_liner(16))
+print(digital_root_one_liner(9422))
