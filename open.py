@@ -13,13 +13,10 @@ def order(sentence: str):
     list_of_tuple = []
     # loop through the list of words
     for i in range(len(list_of_words)):
-        # loop through the word
-        for l in list_of_words[i]:
-            # check if the letter is a number
-            if l.isdigit():
-                # if letter is a number then create a tuple with the number as the key
-                # and the word as the value then append it to list_of_tuple
-                list_of_tuple.append((l, list_of_words[i]))
+        list_of_tuple.extend(
+            (l, list_of_words[i]) for l in list_of_words[i] if l.isdigit()
+        )
+
     # sort the list of tuples
     sorted_words = sorted(list_of_tuple)
     # return and join the the values of the sorted list
